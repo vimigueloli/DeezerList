@@ -1,0 +1,46 @@
+.header{
+    background-color: #19e284;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.display{
+    width: 40%;
+    background-color: rgb(184, 33, 33);
+    height: 70vh;
+
+}
+.listHeader{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 1vh;
+    border-bottom: solid 1px black;
+    padding-bottom: 1vh;
+}
+.fav{
+    height: 6vh;
+    width: 6vh;
+}
+.list{
+    width: 40%;
+    height: 70vh;
+    background-color: coral;
+}
+
+.lista{
+    overflow: scroll;
+    height: 64vh;
+}
+.lista::-webkit-scrollbar{
+    display: none;
+}

@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+.image{
+    margin-top: 15vh;
+    height: 35vh;
+    width: 35vh;
+    background-color: darkslategrey;
+    border-radius: 5px;
+}
+.buttons{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

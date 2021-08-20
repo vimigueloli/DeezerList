@@ -1,0 +1,16 @@
+.bar{
+    background-color: rgb(220, 255, 228);
+    width: 75%;
+    height: 3.5vh;
+    border-radius: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.default{
+    color: black;
+    opacity: 30%;
+    margin-left: 3%;
+
+}
