@@ -6,6 +6,10 @@
     justify-content: center;
     align-items: center;
 }
+.logo{
+    width: 10vh;
+    height: auto;
+}
 .content{
     margin-top: 15vh;
     display: flex;
@@ -15,17 +19,19 @@
 }
 .display{
     width: 40%;
-    background-color: rgb(184, 33, 33);
+    background-color: rgb(196, 236, 224);
     height: 70vh;
-
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    overflow: hidden;
 }
 .listHeader{
     display:flex;
     justify-content: space-evenly;
     align-items: center;
     padding-top: 1vh;
-    border-bottom: solid 1px black;
     padding-bottom: 1vh;
+    background-color: #19e284;
 }
 .fav{
     height: 6vh;
@@ -34,7 +40,10 @@
 .list{
     width: 40%;
     height: 70vh;
-    background-color: coral;
+    background-color: rgb(196, 236, 224);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
 }
 
 .lista{

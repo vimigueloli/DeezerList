@@ -5,7 +5,11 @@ import { Music } from '../music'
 import { Search } from '../search'
 import styles from './css.module.css'
 import star from '../../assets/star.svg'
+import logo from '../../assets/Logotype/DIGITAL RGB/SVG/Deezer_Logo_RVB_MonoWhite.svg'
 import fav from '../../assets/fav.svg'
+import starM from '../../assets/star-menu.svg'
+import favM from '../../assets/fav-menu.svg'
+import axios from 'axios'
 
 export function Home(){
     const track = {
@@ -13,10 +17,12 @@ export function Home(){
         artist: 'Shawn Mendes'
     }
 
+    /*fetch() https://api.deezer.com/playlist/3155776842*/
+
     return(
         <section>
             <div className ={styles.header}>
-                <h1>Deezer</h1>
+                <img src={logo} atlt="logo" className={styles.logo} />
             </div>
             <div className={styles.content}>
                 <div className={styles.display}> 
@@ -25,11 +31,13 @@ export function Home(){
                 <div className={styles.list}>
                     <div className={styles.listHeader}>
                         <Search />
-                        <img src={star} atlt="star" className={styles.fav} />
+                        <img src={starM} atlt="star" className={styles.fav} />
                     </div>
                     <div className={styles.lista}>
                         <Music music={track.music} artist={track.artist}/>
-                        <Favorite music={track.music} artist={track.artist}/>
+                        <Music music={track.music} artist={track.artist}/>
+                        <Music music={track.music} artist={track.artist}/>
+                        <Music music={track.music} artist={track.artist}/>
                     </div>
                 </div>
             </div>

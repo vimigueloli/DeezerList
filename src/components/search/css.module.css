@@ -1,7 +1,7 @@
 .bar{
     background-color: rgb(220, 255, 228);
     width: 75%;
-    height: 3.5vh;
+    height: 4.5vh;
     border-radius: 50px;
     display: flex;
     justify-content: flex-start;
@@ -11,6 +11,8 @@
 .default{
     color: black;
     opacity: 30%;
-    margin-left: 3%;
+    margin-left: 5%;
+    font-size: 2vh;
+    font-family:  Haettenschweiler, 'Arial', sans-serif;
 
 }

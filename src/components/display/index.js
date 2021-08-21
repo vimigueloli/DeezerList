@@ -9,8 +9,13 @@ export function Display(){
                 </div>
             </div>
             <div className={styles.buttons}>
-                <button>preview</button>
-                <button>ouvir</button>
+                <div>
+                    <a className={styles.texto}>OUVIR</a>
+                </div>
+
+                <div>
+                    <a className={styles.texto}>PREVIEW</a>
+                </div>
             </div>
         </div>
     )
