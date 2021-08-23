@@ -11,7 +11,6 @@ export function Display(props){
     if(props.prev != undefined){
         let audio = document.getElementById('audio')
         if(audio != undefined){
-            
             audio.load()
             audio.play()
         } 

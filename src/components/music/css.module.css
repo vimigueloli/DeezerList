@@ -33,6 +33,7 @@
 } 
 .artist{
     font-size: 1.8vh;
+    color: black;
     opacity: 50%;
     width: 100%;
     display: flex;
