@@ -40,6 +40,25 @@ export function Home(){
         //setPlaylist(Object.values(playlist))
         //console.log(typeof playlist)
     },[])
+    useEffect(() => {
+        var top = {
+            method: 'GET',
+            url: 'https://deezerdevs-deezer.p.rapidapi.com/playlist/3155776842',
+            headers: {
+                'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
+                'x-rapidapi-key': `${process.env.REACT_APP_DEEZER_KEY}`
+            }
+        }
+        axios.request(top).then(function (response) {
+            setPlaylist(response.data.tracks.data);
+            //console.log(response.data.tracks.data)
+        }).catch(function (error) {
+            console.error(error);
+        });
+        //playlist.map(response => console.log(response))
+        //setPlaylist(Object.values(playlist))
+        //console.log(typeof playlist)
+    },[])
 
     
     
