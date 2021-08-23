@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useImperativeHandle} from 'react'
 import { Display } from '../display'
 import { Favorite } from '../favorite'
 import  Music  from '../music'
@@ -17,9 +17,8 @@ export function Home(){
         artist: 'Shawn Mendes'
     }
     const [playlist,setPlaylist] = useState([])
+    const [selected,setSelected] = useState([])
     //https://api.deezer.com/playlist/3155776842
-
-    
 
     
     useEffect(() => {
@@ -41,6 +40,8 @@ export function Home(){
         //setPlaylist(Object.values(playlist))
         //console.log(typeof playlist)
     },[])
+
+    
     
 
     
@@ -51,7 +52,13 @@ export function Home(){
             </div>
             <div className={styles.content}>
                 <div className={styles.display}> 
-                    <Display />
+                    {
+                        selected.album ?
+                        <Display ouvir={selected.link} prev={selected.preview} cover={selected.album.cover_big}/>:
+                        <Display />
+                    }
+                    
+                    
                 </div>
                 <div className={styles.list}>
                     <div className={styles.listHeader}>
@@ -61,10 +68,22 @@ export function Home(){
                     <div className={styles.lista}>
                         {   
                             //console.log('alterou'),
-                            playlist.map(response => <Music cover={response.album.cover} time={response.duration} key={response.id} music={response.title} artist={response.artist.name}/>)
+                            playlist.map(response => <Music 
+                                onClick={()=>{
+                                        setSelected([])
+                                        console.log(selected)
+                                        setSelected(response)
+                                        console.log(selected)
+                                }}
+                                cover={response.album.cover} 
+                                time={response.duration} 
+                                key={response.id} 
+                                music={response.title} 
+                                artist={response.artist.name}
+                            />)
                                 
                         }
-                        
+                        <div className={styles.end} />
                     </div>
                 </div>
             </div>

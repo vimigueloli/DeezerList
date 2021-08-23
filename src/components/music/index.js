@@ -7,7 +7,7 @@ export default function Music(props){
     //const minutes = Math.floor(props.time/60)
     const time = new Date(props.time * 1000).toISOString().substr(14, 5)
     return(
-        <section>
+        <section onClick={props.onClick}>
             <div className={styles.content}>
                 <img src={props.cover} alt={"capa"} className={styles.image}/>
                 <div className={styles.data}>

@@ -50,6 +50,10 @@
     overflow: scroll;
     height: 64vh;
 }
+.end{
+    height: 15vh;
+    background-color: rgb(196, 236, 224);
+}
 .lista::-webkit-scrollbar{
     display: none;
 }
