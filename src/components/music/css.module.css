@@ -7,7 +7,6 @@
     transition: ease-in-out 0.3s;
 }
 .content:hover{
-    opacity: 85%;
     height: 10vh;
     background-color: #19e2841a;
 }
