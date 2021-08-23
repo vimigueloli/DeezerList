@@ -3,7 +3,7 @@ import styles from './css.module.css'
 import star from '../../assets/star.svg'
 import fav from '../../assets/fav.svg'
 
-export function Music(props){
+export default function Music(props){
     return(
         <section>
             <div className={styles.content}>
@@ -20,6 +20,5 @@ export function Music(props){
             </div>
             <div className={styles.divider}/>
         </section>
-        
     )
 }
