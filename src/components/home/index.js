@@ -23,13 +23,12 @@ export function Home(){
 
     
     useEffect(() => {
-
         var top = {
             method: 'GET',
             url: 'https://deezerdevs-deezer.p.rapidapi.com/playlist/3155776842',
             headers: {
                 'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
-                'x-rapidapi-key': 'd376dd7e3bmsh26e173b303a5bb2p121984jsn86fa401feed3'
+                'x-rapidapi-key': `${process.env.REACT_APP_DEEZER_KEY}`
             }
         }
         axios.request(top).then(function (response) {
@@ -38,7 +37,7 @@ export function Home(){
         }).catch(function (error) {
             console.error(error);
         });
-        //playlist.map(response => console.log(response.title))
+        //playlist.map(response => console.log(response))
         //setPlaylist(Object.values(playlist))
         //console.log(typeof playlist)
     },[])
@@ -62,7 +61,7 @@ export function Home(){
                     <div className={styles.lista}>
                         {   
                             //console.log('alterou'),
-                            playlist.map(response => <Music key={response.id} music={response.title} artist={response.artist.name}/>)
+                            playlist.map(response => <Music cover={response.album.cover} time={response.duration} key={response.id} music={response.title} artist={response.artist.name}/>)
                                 
                         }
                         

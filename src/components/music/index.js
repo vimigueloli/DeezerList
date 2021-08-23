@@ -4,17 +4,25 @@ import star from '../../assets/star.svg'
 import fav from '../../assets/fav.svg'
 
 export default function Music(props){
+    //const minutes = Math.floor(props.time/60)
+    const time = new Date(props.time * 1000).toISOString().substr(14, 5)
     return(
         <section>
             <div className={styles.content}>
-                <div className={styles.image}></div>
+                <img src={props.cover} alt={"capa"} className={styles.image}/>
                 <div className={styles.data}>
                     <h6 className={styles.musig}>
                         {props.music}
                     </h6>
-                    <a className={styles.artist}>
-                        {props.artist}
-                    </a>
+                    <div className={styles.artist}>
+                        <a>
+                            {props.artist}
+                        </a>
+                        <a>
+                           {time}
+                        </a>
+                    </div>
+                    
                 </div>
                 <img src={star} alt="star" className={styles.fav}/>
             </div>
