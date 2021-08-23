@@ -33,8 +33,7 @@
 } 
 .artist{
     font-size: 1.8vh;
-    color: black;
-    opacity: 50%;
+    color: rgba(0, 0, 0, 0.5);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -48,6 +47,5 @@
     width: 98%;
     margin-left: 1%;
     height: 1px;
-    background-color: rgb(0, 0, 0);
-    opacity: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
