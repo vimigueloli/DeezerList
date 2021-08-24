@@ -2,12 +2,7 @@ import React, {useEffect,useState} from 'react'
 import styles from './css.module.css'
 
 export function Display(props){
-    const  [song,setSong] = useState(props.prev) 
-
-    useEffect(()=> {
-        
-        
-    },[song])
+    
     if(props.prev != undefined){
         let audio = document.getElementById('audio')
         if(audio != undefined){
@@ -43,9 +38,13 @@ export function Display(props){
                 
                 
             </div>
-            <div className={styles.original}>
+            { 
+                props.prev ?
+                <div className={styles.original}>
                     <a target="_blank" href={props.ouvir} className={styles.botao}> MUSICA COMPLETA</a>
-            </div>
+                </div>:
+                <></>
+            }
         </div>
     )
 }

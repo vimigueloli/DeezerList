@@ -1,21 +1,20 @@
 import React, {useState, useEffect, useImperativeHandle} from 'react'
-import { Display } from '../display'
-import { Favorite } from '../favorite'
-import  Music  from '../music'
-import { Search } from '../search'
+import { Display } from '../../components/display'
+import { Favorite } from '../../components/favorite'
+import  Music  from '../../components/music'
+import { Search } from '../../components/search'
 import styles from './css.module.css'
-import star from '../../assets/star.svg'
 import logo from '../../assets/Logotype/DIGITAL RGB/SVG/Deezer_Logo_RVB_MonoWhite.svg'
-import fav from '../../assets/fav.svg'
+import axios from 'axios'
 import starM from '../../assets/star-menu.svg'
 import favM from '../../assets/fav-menu.svg'
-import axios from 'axios'
 
 export function Home(){
     const track = {
         music: 'Ruin',
         artist: 'Shawn Mendes'
     }
+    const [favMenu, setFavMenu] = useState(false) 
     const [playlist,setPlaylist] = useState([])
     const [selected,setSelected] = useState([])
     //https://api.deezer.com/playlist/3155776842
@@ -60,10 +59,6 @@ export function Home(){
         //console.log(typeof playlist)
     },[])
 
-    
-    
-
-    
     return(
         <section>
             <div className ={styles.header}>
@@ -73,17 +68,32 @@ export function Home(){
                 <div className={styles.display}> 
                     {
                         selected.album ?
-                        <Display ouvir={selected.link} prev={selected.preview} cover={selected.album.cover_big}/>:
+                        <Display ouvir={selected.link} prev={selected.preview} cover={selected.album.cover_big}/> :
                         <Display />
                     }
                     
                     
                 </div>
                 <div className={styles.list}>
-                    <div className={styles.listHeader}>
-                        <Search />
-                        <img src={starM} atlt="star" className={styles.fav} />
-                    </div>
+                    {
+                        favMenu ?
+                            <div className={styles.listHeader}>
+                                <img src={favM} 
+                                    onClick={()=> setFavMenu(false)}
+                                    atlt="star" 
+                                    className={styles.fav} 
+                                />
+                            </div> :
+                            <div className={styles.listHeader}>
+                                <Search />
+                                <img src={starM}
+                                    onClick={()=> setFavMenu(true)} 
+                                    atlt="star" 
+                                    className={styles.fav} 
+                                />
+                            </div>
+                    }
+                        
                     <div className={styles.lista}>
                         {   
                             //console.log('alterou'),

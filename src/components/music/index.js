@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './css.module.css'
 import star from '../../assets/star.svg'
-import fav from '../../assets/fav.svg'
+import favo from '../../assets/fav.svg'
 
 export default function Music(props){
-    //const minutes = Math.floor(props.time/60)
+    const [fav,setFav] = useState(false)
     const time = new Date(props.time * 1000).toISOString().substr(14, 5)
     return(
         <section onClick={props.onClick}>
@@ -24,7 +24,20 @@ export default function Music(props){
                     </div>
                     
                 </div>
-                <img src={star} alt="star" className={styles.fav}/>
+                {
+                    fav? 
+                    <img src={favo}
+                        onClick={()=> setFav(false)}
+                        alt="star" 
+                        className={styles.fav}
+                    /> :
+                    <img src={star} 
+                        onClick={()=> setFav(true)}
+                        alt="star" 
+                        className={styles.fav}
+                    />
+                }
+                
             </div>
             <div className={styles.divider}/>
         </section>
