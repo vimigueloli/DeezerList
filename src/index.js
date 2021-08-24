@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Home } from './screens/home';
+import Home  from './screens/home';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux'
+import store from './components/store'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Provider store={store}>
+      <Home />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

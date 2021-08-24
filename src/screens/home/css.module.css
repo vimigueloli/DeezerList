@@ -17,6 +17,18 @@
     align-items: center;
     height: 70vh;
 }
+@media screen and (max-width: 768px){
+    .content{
+        flex-direction: column;
+        width: 100%;
+    }
+    .display{
+        width: 100%;
+    }
+    .list{
+        width: 100%;
+    }
+}
 .display{
     width: 40%;
     background-color: rgb(196, 236, 224);

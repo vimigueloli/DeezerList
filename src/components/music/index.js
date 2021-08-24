@@ -1,16 +1,33 @@
 import React, {useState} from 'react';
+import {connect,useDispatch,useSelector} from 'react-redux'
 import styles from './css.module.css'
 import star from '../../assets/star.svg'
 import favo from '../../assets/fav.svg'
 
-export default function Music(props){
+const Music = (props) => {
     const [fav,setFav] = useState(false)
+    const favList = useSelector(state => state.favorite)
+    const dispatch = useDispatch()
     const time = new Date(props.time * 1000).toISOString().substr(14, 5)
+    const item = {
+        id: props.key,
+        nome: props.music,
+        artista: props.artist,
+        capa: props.cover,
+        tempo: props.time
+    }
+    function handleFavorite(selecionado){
+        setFav(true)
+        return{
+            type:'HANDLE_FAV',
+            item: selecionado
+        }
+    }
     return(
-        <section onClick={props.onClick}>
+        <section >
             <div className={styles.content}>
-                <img src={props.cover} alt={"capa"} className={styles.image}/>
-                <div className={styles.data}>
+                <img onClick={props.onClick} src={props.cover} alt={"capa"} className={styles.image}/>
+                <div onClick={props.onClick} className={styles.data}>
                     <h6 className={styles.musig}>
                         {props.music}
                     </h6>
@@ -32,7 +49,9 @@ export default function Music(props){
                         className={styles.fav}
                     /> :
                     <img src={star} 
-                        onClick={()=> setFav(true)}
+                        onClick={()=>(
+                            dispatch(handleFavorite(item))
+                        )}
                         alt="star" 
                         className={styles.fav}
                     />
@@ -43,3 +62,5 @@ export default function Music(props){
         </section>
     )
 }
+
+export default connect(state=>({state: state}))(Music)

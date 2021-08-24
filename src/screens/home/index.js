@@ -2,14 +2,15 @@ import React, {useState, useEffect, useImperativeHandle} from 'react'
 import { Display } from '../../components/display'
 import { Favorite } from '../../components/favorite'
 import  Music  from '../../components/music'
-import { Search } from '../../components/search'
+import Search  from '../../components/search'
 import styles from './css.module.css'
 import logo from '../../assets/Logotype/DIGITAL RGB/SVG/Deezer_Logo_RVB_MonoWhite.svg'
 import axios from 'axios'
 import starM from '../../assets/star-menu.svg'
 import favM from '../../assets/fav-menu.svg'
+import { connect } from 'react-redux'
 
-export function Home(){
+const Home = () =>{
     const track = {
         music: 'Ruin',
         artist: 'Shawn Mendes'
@@ -20,25 +21,6 @@ export function Home(){
     //https://api.deezer.com/playlist/3155776842
 
     
-    useEffect(() => {
-        var top = {
-            method: 'GET',
-            url: 'https://deezerdevs-deezer.p.rapidapi.com/playlist/3155776842',
-            headers: {
-                'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
-                'x-rapidapi-key': `${process.env.REACT_APP_DEEZER_KEY}`
-            }
-        }
-        axios.request(top).then(function (response) {
-            setPlaylist(response.data.tracks.data);
-            //console.log(response.data.tracks.data)
-        }).catch(function (error) {
-            console.error(error);
-        });
-        //playlist.map(response => console.log(response))
-        //setPlaylist(Object.values(playlist))
-        //console.log(typeof playlist)
-    },[])
     useEffect(() => {
         var top = {
             method: 'GET',
@@ -119,3 +101,5 @@ export function Home(){
         </section>
     )
 }
+
+export default connect(state => ({buscas: state.buscas}))(Home)
