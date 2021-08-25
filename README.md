@@ -4,7 +4,7 @@
 
 #### Esse projeto foi um desafio de um processo seletivo para desenvolvedor Front-end. O objetivo era testar as minhas habilidades, principalmente com as tecnologias React, Redux e Axios. Voce pode testar essa web aplication acessando: https://deezer-list.vercel.app/
 
-# dependências
+# Dependências
 
 ![GitHub](https://img.shields.io/badge/dependências-react-4e8dec?style=plastic)
 ![GitHub](https://img.shields.io/badge/react_redux-4e8dec?style=plastic)
