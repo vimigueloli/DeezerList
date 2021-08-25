@@ -2,27 +2,55 @@
     display: flex;
     width: 100%;
     height: 8vh;
-    background-color: #19e284;
     justify-content: space-evenly;
     align-items: center;
+    transition: ease-in-out 0.3s;
+}
+.content:hover{
+    height: 10vh;
+    background-color: #19e2841a;
+}
+.content:hover .image{
+    height: 7vh;
+    width: 7vh;
 }
 .image{
     height: 6vh;
     width: 6vh;
     border-radius: 3px;
     background-color: darkslategrey;
+    transition: ease-in-out 0.3s;
 }
 .data{
-    font-size: 3vh;
+    font-size: 2.5vh;
     width: 60%;
+    color: black;
+    font-family:  'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
 } 
 .artist{
-    font-size: 2vh;
-    opacity: 50%;
+    font-size: 1.8vh;
+    color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+.fav{
+    height: 6vh;
+    width: 6vh;
+}
+.divider{
+    width: 98%;
+    margin-left: 1%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .delete{
-    height: 1vh;
+    height: 0.75vh;
     width: 6%;
     border-radius: 15px;
-    background-color: tomato;
+    background-color: rgba(0, 0, 0, 0.5);
 }
