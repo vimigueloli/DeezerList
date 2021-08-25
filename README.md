@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/vimigueloli/DeezerList?color=brigthgreen) <br/>
 
-#### Esse Projeo Foi um desafio de um processo seletivo para desenvolvedor Front-end. O objetivo era testar as minhas habilidades, principalmente com as tecnologias React, Redux e Axios. Voce pode testar essa web aplication acessando: https://deezer-list.vercel.app/
+#### Esse projeto Foi um desafio de um processo seletivo para desenvolvedor Front-end. O objetivo era testar as minhas habilidades, principalmente com as tecnologias React, Redux e Axios. Voce pode testar essa web aplication acessando: https://deezer-list.vercel.app/
 
 # dependências
 
