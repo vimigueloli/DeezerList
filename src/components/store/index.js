@@ -91,9 +91,49 @@ function reducer(state = initial_state,action){
             favMenu: action.new
         }
     }
+    if(action.type == 'DELETE'){
+        console.log(action.item.id)
+        let mudou = false
+        let conta = []
+        let listaFav = state.favorite
+        for(let i=0; i < listaFav.length;i++){
+            if(action.item.id == listaFav[i].id){
+                mudou = true
+                conta = listaFav[i].cont
+            }
+            if(mudou){
+                listaFav[i].cont = i-1
+            }
+            
+        }  
+        let content = state.list
+        let newCont = action.item.cont - 1
+        for(let i=0; i < state.list.length ; i++){
+            if(state.list[i].id == action.item.id){
+                content[i].fav = false
+            }
+        }
+        listaFav.splice(conta,1) 
+        console.log(listaFav)   
+        return{
+            ...state,
+            favorite: listaFav,
+            favCont: newCont,
+            list: content
+            
+        }
+    }
     if(action.type == 'LISTAGEM'){
         let listagem = action.itens
-        //console.log(listagem)
+        for(let i=0; i < listagem.length;i++){
+            for(let j = 0; j < state.favorite.length;j++){
+                //console.log(`${listagem[i].id}----${state.favorite[i].id}`)
+                if(listagem[i].id == state.favorite[j].id){
+                    listagem[i].fav = true
+                }
+            }
+            
+        }
         return{
             ...state,
             list: [...listagem]

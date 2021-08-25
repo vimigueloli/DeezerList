@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Display } from '../../components/display'
-import { Favorite } from '../../components/favorite'
+import  Favorite  from '../../components/favorite'
 import  Music  from '../../components/music'
 import Search  from '../../components/search'
 import styles from './css.module.css'
@@ -19,16 +19,6 @@ const Home = () =>{
     const dispatch = useDispatch() 
     const [selected,setSelected] = useState([])
 
-    let exemplo = [
-        {
-            name: 'obj1',
-            id: 1
-        },
-        {
-            name: 'obj2',
-            id: 2
-        }
-    ]
 
     function completeObjects(arrayObj){
         let cont = 0 
@@ -121,13 +111,18 @@ const Home = () =>{
                         {   
                             favMenu?
                             favorites.map(response => <Favorite 
-                                
+                                onClick={()=>{
+                                    setSelected([])
+                                    console.log(response)
+                                    setSelected(response)
+                                }}
                                 cover={response.cover} 
                                 time={response.time} 
                                 key={response.id} 
                                 id={response.id}
                                 music={response.music} 
                                 artist={response.artist}
+                                prev={response.prev}
                             />):
                             playlist.map(response => <Music 
                                 onClick={()=>{
@@ -141,6 +136,9 @@ const Home = () =>{
                                 music={response.title} 
                                 ordem={response.ordem} 
                                 artist={response.artist.name}
+                                preview={response.preview}
+                                link={response.link}
+                                big_cover={response.album.cover_big}
                             />)
                         }
                         <div className={styles.end} />

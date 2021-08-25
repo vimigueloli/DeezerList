@@ -17,7 +17,12 @@ const Music = (props) => {
         time: time,
         music: props.music,
         artist: props.artist,
-        cont: favCont
+        cont: favCont,
+        preview: props.preview,
+        link: props.link,
+        album:{
+            cover_big: props.big_cover
+        }
     }
     const [state,setState] = useState(()=>{
         if(favoritos != undefined){
@@ -32,6 +37,12 @@ const Music = (props) => {
             return(false)
         }
     })
+    function deleteFav(item){
+        return{
+            type: 'DELETE',
+            item: item
+        }
+    }
     function handleFavorite(selecionado){
         return{
             type:'HANDLE_FAV',
@@ -52,7 +63,7 @@ const Music = (props) => {
 
 
     return(
-        <section >
+        <section id={props.cont}>
             <div className={styles.content}>
                 <img onClick={props.onClick} src={props.cover} alt={"capa"} className={styles.image}/>
                 <div onClick={props.onClick} className={styles.data}>
@@ -72,7 +83,7 @@ const Music = (props) => {
                 {
                     fav? 
                     <img src={favo}
-                        //onClick={()=> setFav(false)}
+                        onClick={()=> dispatch(deleteFav(item))}
                         alt="star" 
                         className={styles.fav}
                     /> :

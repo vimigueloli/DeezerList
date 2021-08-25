@@ -1,13 +1,21 @@
 import React from 'react'
 import styles from './css.module.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 
-export function Favorite(props){
-    const macaco= []
+const Favorite = (props) =>{
+    const dispatch= useDispatch()
+    const id = props.id
+    function deleteFav(item){
+        document.getElementById(id).style.display = 'none';
+        return{
+            type: 'DELETE',
+            item: item
+        }
+    }
 
 
     return(
-        <section >
+        <section id={id}>
             <div className={styles.content}>
                 <img onClick={props.onClick} src={props.cover} alt={"capa"} className={styles.image}/>
                 <div onClick={props.onClick} className={styles.data}>
@@ -24,10 +32,14 @@ export function Favorite(props){
                     </div>
                     
                 </div>
-                <div className={styles.delete}/>
+                <div className={styles.delete}
+                    onClick={()=>dispatch(deleteFav(props))}
+                />
                 
             </div>
             <div className={styles.divider}/>
         </section>
     )
 }
+
+export default connect(state => ({state: state}))(Favorite)
