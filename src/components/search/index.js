@@ -20,6 +20,16 @@ const Search = ({state,dispatch}) =>{
         }
     }
 
+    function completeObjects(arrayObj){
+        let cont = 0 
+        arrayObj.map(item =>{
+            item.ordem= cont
+            item.fav= false
+            cont++
+            return item;
+        })
+    }
+
     
     function handleBusca(conteudo){
         var busca = {
@@ -31,8 +41,10 @@ const Search = ({state,dispatch}) =>{
             }
         }
         axios.request(busca).then(function (response) {
+            //console.log(response.data.data)
+            let musicas = completeObjects(response.data.data)
+            //console.log(musicas)
             dispatch(listagem(response.data.data))
-            console.log(response)
         }).catch(function (error) {
             console.error(error);
         });

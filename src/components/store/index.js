@@ -46,6 +46,7 @@ const initial_state = {
     buscas,
     filter: buscas[1],
     favorite: [],
+    favCont: 0,
     search: 'playlist/3155776842',
     favMenu: false,
     list: lista
@@ -70,9 +71,18 @@ function reducer(state = initial_state,action){
     }
     if(action.type == 'HANDLE_FAV'){
         let novo = action.item
+        let content = state.list
+        let newCont = action.item.cont + 1
+        for(let i=0; i < state.list.length ; i++){
+            if(state.list[i].id == action.item.id){
+                content[i].fav = true
+            }
+        }
         return{
             ...state,
-            favorite: [...state.favorite,novo]
+            favorite: [...state.favorite,novo],
+            list: content,
+            favCont: newCont 
         }
     }
     if(action.type == 'HANDLE_MENU'){
@@ -83,7 +93,7 @@ function reducer(state = initial_state,action){
     }
     if(action.type == 'LISTAGEM'){
         let listagem = action.itens
-        console.log(listagem)
+        //console.log(listagem)
         return{
             ...state,
             list: [...listagem]

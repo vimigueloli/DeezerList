@@ -7,14 +7,17 @@ import favo from '../../assets/fav.svg'
 const Music = (props) => {
     
     const favoritos = useSelector(state => state.favorite)
+    const fav = useSelector(state => state.list[props.ordem].fav)
+    const favCont = useSelector(state => state.favCont)
     const dispatch = useDispatch()
     const time = new Date(props.time * 1000).toISOString().substr(14, 5)
     const item = {
-        id: props.id,
-        nome: props.music,
-        artista: props.artist,
-        capa: props.cover,
-        tempo: time
+        id:props.id,
+        cover:props.cover,
+        time: time,
+        music: props.music,
+        artist: props.artist,
+        cont: favCont
     }
     const [state,setState] = useState(()=>{
         if(favoritos != undefined){
@@ -30,11 +33,6 @@ const Music = (props) => {
         }
     })
     function handleFavorite(selecionado){
-        if(state == false){
-            setState(true)
-        }else{
-            setState(false)
-        }
         return{
             type:'HANDLE_FAV',
             item: selecionado
@@ -72,7 +70,7 @@ const Music = (props) => {
                     
                 </div>
                 {
-                    state? 
+                    fav? 
                     <img src={favo}
                         //onClick={()=> setFav(false)}
                         alt="star" 

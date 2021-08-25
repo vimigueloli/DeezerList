@@ -18,6 +18,27 @@ const Home = () =>{
     const playlist = useSelector(state => state.list)
     const dispatch = useDispatch() 
     const [selected,setSelected] = useState([])
+
+    let exemplo = [
+        {
+            name: 'obj1',
+            id: 1
+        },
+        {
+            name: 'obj2',
+            id: 2
+        }
+    ]
+
+    function completeObjects(arrayObj){
+        let cont = 0 
+        arrayObj.map(item =>{
+            item.ordem= cont
+            item.fav= false
+            cont++
+            return item;
+        })
+    }
     
 
     function handleFavMenu(){
@@ -50,11 +71,15 @@ const Home = () =>{
             }
         }
         axios.request(top).then(function (response) {
-            //console.log(response.data.tracks.data)
-            dispatch(listagem(response.data.tracks.data))
+            let completeList = response.data.tracks.data
+            completeObjects(completeList)
+            dispatch(listagem(completeList))
         }).catch(function (error) {
             console.error(error);
         });
+
+        
+
     },[])
 
     return(
@@ -97,12 +122,12 @@ const Home = () =>{
                             favMenu?
                             favorites.map(response => <Favorite 
                                 
-                                cover={response.capa} 
-                                time={response.tempo} 
+                                cover={response.cover} 
+                                time={response.time} 
                                 key={response.id} 
                                 id={response.id}
-                                music={response.nome} 
-                                artist={response.artista}
+                                music={response.music} 
+                                artist={response.artist}
                             />):
                             playlist.map(response => <Music 
                                 onClick={()=>{
@@ -114,6 +139,7 @@ const Home = () =>{
                                 key={response.id} 
                                 id={response.id}
                                 music={response.title} 
+                                ordem={response.ordem} 
                                 artist={response.artist.name}
                             />)
                         }

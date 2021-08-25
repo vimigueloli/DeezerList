@@ -1,7 +1,11 @@
 import React from 'react'
 import styles from './css.module.css'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function Favorite(props){
+    const macaco= []
+
+
     return(
         <section >
             <div className={styles.content}>
