@@ -31,21 +31,21 @@ export default function ThemeProvider({ children }: ProviderProps) {
     async function getCookiesInfo() {
       const response = await parseCookies();
       console.log("theme->", response.theme);
-      if (response.theme === "dark") {
-        setThemeState({
-          dark: true,
-          changed: false,
-          background: "black",
-          text1: "white",
-          text2: "black",
-        });
-      } else {
+      if (response.theme !== "dark") {
         setThemeState({
           dark: false,
           changed: false,
           background: "mainCian",
           text1: "black",
           text2: "white",
+        });
+      } else {
+        setThemeState({
+          dark: true,
+          changed: false,
+          background: "black",
+          text1: "white",
+          text2: "black",
         });
       }
     }
