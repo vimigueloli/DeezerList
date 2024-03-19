@@ -1,14 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Theme } from "@/src/contexts/theme";
 import { IoIosMusicalNotes } from "react-icons/io";
-import api from "@/src/api";
-import toast from "react-hot-toast";
 import { Selected, SelectedProps } from "@/src/contexts/selected";
 import {
   IoPlayBackSharp,
   IoPlayForwardSharp,
-  IoPlaySkipBackSharp,
-  IoPlaySkipForwardSharp,
   IoPlaySharp,
   IoPauseSharp,
 } from "react-icons/io5";
@@ -17,6 +12,7 @@ export default function Player() {
   const selected: SelectedProps = useContext(Selected);
   const audioRef = useRef();
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
     let audio = document.getElementById("audio");
@@ -82,6 +78,14 @@ export default function Player() {
             })`,
           }}
         >
+          <div className="w-full line-left">
+            <div
+              className={`h-2 absolute with-transition ease-linear bg-mainColor`}
+              style={{
+                width: `${progress}%`,
+              }}
+            ></div>
+          </div>
           <div
             className={`
                             w-full h-full
@@ -96,13 +100,13 @@ export default function Player() {
           </div>
           <div
             className={`
-                            mr-4 mb-4 w-24 rounded-sm h-10 
+                            mr-4 mb-4  rounded-sm h-10 
                             z-10 font-bold p-1
                             bg-white line-center
                             border border-black
                         `}
           >
-            <div className="bg-black leading-3 line-center text-xs text-center text-white w-full h-full">
+            <div className="bg-black leading-3 line-center text-[8px] px sm:text-xs text-center text-white w-full h-full">
               OFERED BY DEEZER
             </div>
           </div>
@@ -115,6 +119,18 @@ export default function Player() {
             src={selected.preview}
             //@ts-ignore
             ref={audioRef}
+            onTimeUpdate={(e: any) => {
+              let output = 0;
+              let percentage = Math.ceil(
+                (e.target.currentTime / e.target.duration) * 100
+              );
+              if (!Number.isNaN(percentage)) {
+                output = percentage;
+              } else {
+                output = 0;
+              }
+              setProgress(output);
+            }}
             autoPlay
           />
           <div className={`w-full text-white gap-4 line-between p-4 `}>

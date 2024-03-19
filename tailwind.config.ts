@@ -11,8 +11,6 @@ const config: Config = {
 
     extend: {
         colors: {
-            mainGreen: '#19E284',
-            mainCian: '#C4ECE0',
             mainColor: '#7C05F2',
             lightColor:'#B679F2',
             gray: '#F2F2F2'

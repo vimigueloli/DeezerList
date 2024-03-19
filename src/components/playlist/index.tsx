@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Theme } from "@/src/contexts/theme";
 import toast from "react-hot-toast";
 import api from "@/src/api";
 import MusicItem from "../musicItem";
 import { BiWorld, BiSolidStar } from "react-icons/bi";
 
 export default function Playlist() {
-  const theme = useContext(Theme);
   const [search, setSearch] = useState<string>("");
   const [musics, setMusics] = useState<any[]>([]);
 
@@ -32,7 +30,7 @@ export default function Playlist() {
     <div
       className={`w-full sm:w-1/2 h-full bg-mainColor/10 overflow-hidden line-center items-start flex-wrap `}
     >
-      <div className="w-full line-center flex-col h-1/6">
+      <div className="w-full line-center flex-col h-1/4 sm:h-1/6">
         <div
           className={`text-white w-full  line-evenly gap-8 text-sm sm:text-lg font-semibold`}
         >
@@ -49,7 +47,7 @@ export default function Playlist() {
           As mais tocadas
         </div>
       </div>
-      <div className="line-center h-5/6 overflow-auto w-full flex-wrap">
+      <div className="line-center h-5/6 overflow-auto pb-16 w-full flex-wrap">
         {musics.map((item: any, idx: number) => (
           <MusicItem topPosition={idx + 1} key={item.id} music={item} />
         ))}

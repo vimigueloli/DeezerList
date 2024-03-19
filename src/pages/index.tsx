@@ -2,13 +2,10 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Header from "../components/header";
-import { Theme } from "../contexts/theme";
 import Player from "../components/player";
 import Playlist from "../components/playlist";
 
 export default function Home() {
-  const theme = useContext(Theme);
-
   return (
     <div
       className={`bg-black with-transition w-screen h-screen line-center items-start relative`}
