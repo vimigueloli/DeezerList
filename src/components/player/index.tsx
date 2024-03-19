@@ -14,7 +14,6 @@ import {
 } from "react-icons/io5";
 
 export default function Player() {
-  const theme = useContext(Theme);
   const selected: SelectedProps = useContext(Selected);
   const audioRef = useRef();
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
@@ -52,7 +51,7 @@ export default function Player() {
       {selected.id !== undefined && (
         <div
           className={`text-center
-            text-${theme.text1}
+            text-white
         `}
         >
           <div className="text-lg font-semibold">{selected.title}</div>
@@ -86,10 +85,10 @@ export default function Player() {
           <div
             className={`
                             w-full h-full
-                            bg-${theme.text1} opacity-10
+                            bg-white opacity-10
                             absolute line-center
                             with-transition
-                            text-${theme.text2}
+                            text-black
                             ${selected.id !== undefined ? "hidden" : ""}
                         `}
           >
@@ -118,7 +117,7 @@ export default function Player() {
             ref={audioRef}
             autoPlay
           />
-          <div className={`w-full text-${theme.text1} gap-4 line-between p-4 `}>
+          <div className={`w-full text-white gap-4 line-between p-4 `}>
             <IoPlayBackSharp />
             {isPlaying ? (
               <IoPauseSharp onClick={() => handlePause()} />

@@ -11,12 +11,12 @@ export default function Home() {
 
   return (
     <div
-      className={`bg-${theme.background} with-transition w-screen h-screen line-center items-start relative`}
+      className={`bg-black with-transition w-screen h-screen line-center items-start relative`}
     >
       <Header />
       <div className={`line-center w-full h-screen pt-10`}>
         <div
-          className={`w-full h-full sm:w-5/6 sm:h-5/6 xl:w-3/4 flex-col sm:rounded-md sm:flex-row xl:h-3/4 sm:border line-between border-mainGreen`}
+          className={`w-full h-full sm:w-5/6 sm:h-5/6 xl:w-3/4 flex-col sm:rounded-md sm:flex-row xl:h-3/4 sm:border line-between border-mainColor`}
         >
           <Player />
           <Playlist />

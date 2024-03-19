@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { Theme } from "@/src/contexts/theme";
+import React, { useContext } from "react";
 import { Selected, SelectedUpdater } from "@/src/contexts/selected";
 
 interface MusicProps {
@@ -26,13 +25,12 @@ interface MusicProps {
 }
 
 export default function MusicItem({ music, topPosition }: MusicProps) {
-  const theme = useContext(Theme);
   const setSelected: any = useContext(SelectedUpdater).update;
 
   return (
     <div
-      className={`w-full h-16 line-between text-${theme.text1} with-transition border-b border-mainGreen
-            cursor-pointer hover:bg-mainGreen/30
+      className={`w-full h-16 line-between text-white with-transition border-b border-mainColor
+            cursor-pointer hover:bg-mainColor/30
             pl-0
         `}
       key={music.id}

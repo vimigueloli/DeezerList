@@ -35,7 +35,7 @@ export default function ThemeProvider({ children }: ProviderProps) {
         setThemeState({
           dark: false,
           changed: false,
-          background: "mainCian",
+          background: "mainColor",
           text1: "black",
           text2: "white",
         });
@@ -73,7 +73,7 @@ export default function ThemeProvider({ children }: ProviderProps) {
           setThemeState({
             dark: false,
             changed: false,
-            background: "mainCian",
+            background: "mainColor",
             text1: "black",
             text2: "white",
           });

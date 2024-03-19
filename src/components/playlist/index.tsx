@@ -3,6 +3,7 @@ import { Theme } from "@/src/contexts/theme";
 import toast from "react-hot-toast";
 import api from "@/src/api";
 import MusicItem from "../musicItem";
+import { BiWorld, BiSolidStar } from "react-icons/bi";
 
 export default function Playlist() {
   const theme = useContext(Theme);
@@ -29,16 +30,23 @@ export default function Playlist() {
 
   return (
     <div
-      className={`w-full sm:w-1/2 h-full bg-green-500/10 overflow-hidden line-center items-start flex-wrap `}
+      className={`w-full sm:w-1/2 h-full bg-mainColor/10 overflow-hidden line-center items-start flex-wrap `}
     >
-      <div className="line-between h-1/6">
-        {/*<input
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          type="search"
-        />*/}
-        <div className={`text-${theme.text1} text-sm sm:text-lg font-semibold`}>
-          Top 100 mais tocadas mundialmente
+      <div className="w-full line-center flex-col h-1/6">
+        <div
+          className={`text-white w-full  line-evenly gap-8 text-sm sm:text-lg font-semibold`}
+        >
+          <BiWorld
+            size={35}
+            className={`cursor-pointer with-transition hover:opacity-70`}
+          />
+          <BiSolidStar
+            size={35}
+            className={`opacity-20 cursor-pointer with-transition hover:opacity-70`}
+          />
+        </div>
+        <div className=" w-full text-center text-white font-semibold text-lg">
+          As mais tocadas
         </div>
       </div>
       <div className="line-center h-5/6 overflow-auto w-full flex-wrap">

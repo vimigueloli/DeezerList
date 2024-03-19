@@ -93,7 +93,7 @@
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background-color: #19E28477;
+        background-color: #7C05F277;
         border-radius: 10px;
         transition-duration: 2s;
         transition-property: background-color;
@@ -101,7 +101,7 @@
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background-color: #19E284dd;
+        background-color: #7C05F2dd;
         transition-duration: 2s;
         transition-property: background-color;
     }
