@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { IoIosMusicalNotes } from "react-icons/io";
 import { Selected, SelectedProps } from "@/src/contexts/selected";
-import {
-  IoPlayBackSharp,
-  IoPlayForwardSharp,
-  IoPlaySharp,
-  IoPauseSharp,
-} from "react-icons/io5";
+import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
+import { ImVolumeDecrease, ImVolumeIncrease } from "react-icons/im";
 
 export default function Player() {
   const selected: SelectedProps = useContext(Selected);
   const audioRef = useRef();
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [progress, setProgress] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(1);
 
   useEffect(() => {
     let audio = document.getElementById("audio");
@@ -36,6 +33,26 @@ export default function Player() {
     audioRef.current.play();
     setIsPlaying(true);
   }
+
+  async function increaseVolume() {
+    if (volume <= 0.9) {
+      //@ts-ignore
+      document.getElementById("audio").volume = volume + 0.1;
+      setVolume(volume + 0.1);
+    }
+  }
+
+  async function decreaseVolume() {
+    if (volume >= 0.1) {
+      //@ts-ignore
+      document.getElementById("audio").volume = volume - 0.1;
+      setVolume(volume - 0.1);
+    }
+  }
+
+  useEffect(() => {
+    console.log("volume->", volume);
+  }, [volume]);
 
   return (
     <div
@@ -133,14 +150,26 @@ export default function Player() {
             }}
             autoPlay
           />
-          <div className={`w-full text-white gap-4 line-between p-4 `}>
-            <IoPlayBackSharp />
+          <div className={`w-full text-white gap-16 line-between p-4 `}>
+            <ImVolumeDecrease
+              size={30}
+              onClick={() => decreaseVolume()}
+              className={`${
+                volume >= 0.1 ? "cursor-pointer hover:opacity-70" : "opacity-30"
+              } with-transition`}
+            />
             {isPlaying ? (
-              <IoPauseSharp onClick={() => handlePause()} />
+              <IoPauseSharp size={35} onClick={() => handlePause()} />
             ) : (
-              <IoPlaySharp onClick={() => handlePlay()} />
+              <IoPlaySharp size={35} onClick={() => handlePlay()} />
             )}
-            <IoPlayForwardSharp />
+            <ImVolumeIncrease
+              size={30}
+              onClick={() => increaseVolume()}
+              className={`${
+                volume <= 0.9 ? "cursor-pointer hover:opacity-70" : "opacity-30"
+              } with-transition`}
+            />
           </div>
         </div>
       )}

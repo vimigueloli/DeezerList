@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
-import { setCookie, parseCookies } from "nookies";
 
 export interface ItemProps {
   duration?: number;
@@ -34,21 +33,29 @@ interface ProviderProps {
 
 export default function SavedProvider({ children }: ProviderProps) {
   const [savedState, setSavedState] = useState<ItemProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function loadFavorites() {
-      const cookies = await parseCookies();
-      if (
-        cookies.favorites !== undefined &&
-        cookies.favorites &&
-        cookies.favorites.length > 0
-      ) {
-        console.log("cookies ->", JSON.parse(cookies.favorites));
-        setSavedState(JSON.parse(cookies.favorites));
+      const fav = await localStorage.getItem("favorites");
+      if (fav && fav !== undefined) {
+        console.log("cookies ->", JSON.parse(fav));
+        setSavedState(JSON.parse(fav));
       }
+      setLoading(false);
+      console.log("loaded");
     }
-    loadFavorites();
-  }, []);
+    async function updateCookies() {
+      console.log("update->", savedState);
+      localStorage.setItem("favorites", JSON.stringify(savedState));
+    }
+
+    if (loading) {
+      loadFavorites();
+    } else {
+      updateCookies();
+    }
+  }, [savedState]);
 
   return (
     <Saved.Provider value={savedState}>
